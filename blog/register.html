@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="zh-hans">
+<head>
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <style>
+        .password {
+            clear: both;
+            padding: 8px;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body class=" login">
+<div id="container">
+    <div id="header">
+        <div id="branding">
+            <h1 id="site-name"><a href="/">注册</a></h1>
+        </div>
+    </div>
+    <div id="content" class="colM">
+        <div id="content-main">
+            <form action="#" method="post" onsubmit="return onpost()">
+                <div class="form-row">
+
+                    <label class="required" for="id_username">用户名:</label>
+                    <input type="text" name="username" autofocus required id="id_username">
+                    {% csrf_token %}
+                </div>
+                <div class="form-row">
+                    <label class="required" for="id_password">输入密码:</label>
+                    <input class="password" type="password" name="password" required id="id_password">
+                </div>
+                <div class="form-row">
+                    <label class="required" for="id_password">重复密码:</label>
+                    <input class="password" type="password" name="password2" required id="id_password2">
+                </div>
+
+
+                <div class="submit-row">
+                    <label>&nbsp;</label><input type="submit" value="注册">
+                </div>
+            </form>
+        </div>
+        <br class="clear">
+    </div>
+    <div id="footer"></div>
+</div>
+</body>
+<script>
+    function onpost() {
+        var val1= $('#id_password').val()
+        var val2 = $('#id_password2').val()
+        console.log(val1,val2)
+        if (val1 == val2) {
+            return true;
+        } else {
+            alert("两次密码不一样");
+            return false;
+        }
+
+    }
+</script>
+</html>
